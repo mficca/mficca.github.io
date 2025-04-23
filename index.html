@@ -1,6 +1,5 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -8,31 +7,76 @@
   <link rel="icon" href="favicon.ico" />
   <meta name="description" content="Michael Ficca | Data Scientist Portfolio showcasing projects in healthcare analytics, machine learning, and data science." />
   <style>
+    :root {
+      --bg-light: #f5f5f5;
+      --text-light: #333;
+      --bg-dark: #1e1e1e;
+      --text-dark: #ddd;
+      --primary: #007acc;
+      --card-bg-light: #fff;
+      --card-bg-dark: #2a2a2a;
+    }
+    [data-theme="light"] {
+      background-color: var(--bg-light);
+      color: var(--text-light);
+    }
+    [data-theme="dark"] {
+      background-color: var(--bg-dark);
+      color: var(--text-dark);
+    }
     body {
       font-family: Arial, sans-serif;
-      margin: 2rem auto;
-      max-width: 800px;
-      padding: 1rem;
+      margin: 0;
+      padding: 0;
       line-height: 1.8;
-      background-color: #f5f5f5;
-      color: #333;
       font-size: 18px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+      padding: 2rem 1rem;
     }
     h1, h2 {
-      color: #2c3e50;
+      color: var(--primary);
     }
     a {
-      color: #007acc;
+      color: var(--primary);
+    }
+    nav {
+      background-color: var(--primary);
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+    nav a {
+      margin: 0 1rem;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .toggle-btn {
+      margin-top: 1rem;
+      cursor: pointer;
+      background: none;
+      border: 2px solid var(--primary);
+      padding: 0.5rem 1rem;
+      font-size: 16px;
+      color: var(--primary);
+      border-radius: 6px;
     }
     .project-card {
-      background: #fff;
-      padding: 1rem;
+      background-color: var(--card-bg-light);
       border-radius: 8px;
-      margin-bottom: 1rem;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
+    [data-theme="dark"] .project-card {
+      background-color: var(--card-bg-dark);
+    }
     @media (max-width: 600px) {
-      body {
+      .container {
         padding: 1rem;
       }
     }
@@ -40,60 +84,76 @@
 </head>
 <body>
 
-  <h1>Michael Ficca</h1>
-  <p><strong>Email:</strong> <a href="mailto:ficcam66@gmail.com">ficcam66@gmail.com</a> | <strong>Phone:</strong> (301) 785-0056</p>
-  <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/michael-ficca-36a238139">www.linkedin.com/in/michael-ficca-36a238139</a></p>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#career">Career</a>
+    <a href="#education">Education</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+  </nav>
 
-  <h2>About Me</h2>
-  <p>
-    I am a data scientist and analytical professional with deep experience across healthcare, biotech, and SaaS platforms. My work combines advanced analytics, machine learning, statistical modeling, and intuitive data visualization to generate actionable insights that inform high-stakes decisions in secure, fast-paced environments.
-  </p>
-  <p>
-    My passion lies in uncovering meaningful patterns in complex datasets—particularly those involving healthcare utilization, patient behavior, and population-level disparities. I specialize in working with sensitive, large-scale data in secure environments, applying methods ranging from survival analysis to deep learning and predictive modeling.
-  </p>
+  <div class="container">
+    <h1>Michael Ficca</h1>
+    <p><strong>Email:</strong> <a href="mailto:ficcam66@gmail.com">ficcam66@gmail.com</a> | <strong>Phone:</strong> (301) 785-0056</p>
+    <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/michael-ficca-36a238139">www.linkedin.com/in/michael-ficca-36a238139</a></p>
 
-  <h2>Career Highlights</h2>
-  <ul>
-    <li><strong>Surgo Health (2022–Present)</strong>: Lead analytics on healthcare claims and behavioral datasets; develop models to detect risk and optimize interventions using tools like AWS, Snowflake, and Python.</li>
-    <li><strong>JMAN Group</strong>: Built predictive ML models for operational efficiency in compliance-heavy environments.</li>
-    <li><strong>AstraZeneca</strong>: Conducted survival analysis on anonymized COPD patient data to support clinical decisions.</li>
-    <li><strong>IQVIA</strong>: Detected multimillion-dollar fraud in pharmacy claims; mentored analysts in secure data environments.</li>
-  </ul>
+    <button class="toggle-btn" onclick="toggleTheme()">Toggle Dark/Light Theme</button>
 
-  <h2>Education</h2>
-  <ul>
-    <li><strong>MSc, Health Data Science</strong> — London School of Hygiene and Tropical Medicine</li>
-    <li><strong>BS, Mathematics</strong> — Georgetown University (Minor: Computer Science)</li>
-  </ul>
+    <h2 id="about">About Me</h2>
+    <p>
+      I am a data scientist and analytical professional with deep experience across healthcare, biotech, and SaaS platforms. My work combines advanced analytics, machine learning, statistical modeling, and intuitive data visualization to generate actionable insights that inform high-stakes decisions in secure, fast-paced environments.
+    </p>
+    <p>
+      My passion lies in uncovering meaningful patterns in complex datasets—particularly those involving healthcare utilization, patient behavior, and population-level disparities. I specialize in working with sensitive, large-scale data in secure environments, applying methods ranging from survival analysis to deep learning and predictive modeling.
+    </p>
 
-  <h2>Technical Skills</h2>
-  <p>
-    <strong>Languages:</strong> Python, R, SQL, Java, Scala, C++<br />
-    <strong>Tools:</strong> AWS, Databricks, Snowflake, Tableau, Power BI, Alteryx, Git<br />
-    <strong>Specialties:</strong> Machine Learning, Deep Learning, Health Data Science, Data Engineering, Predictive Modeling
-  </p>
+    <h2 id="career">Career Highlights</h2>
+    <ul>
+      <li><strong>Surgo Health (2022–Present)</strong>: Lead analytics on healthcare claims and behavioral datasets; develop models to detect risk and optimize interventions using tools like AWS, Snowflake, and Python.</li>
+      <li><strong>JMAN Group</strong>: Built predictive ML models for operational efficiency in compliance-heavy environments.</li>
+      <li><strong>AstraZeneca</strong>: Conducted survival analysis on anonymized COPD patient data to support clinical decisions.</li>
+      <li><strong>IQVIA</strong>: Detected multimillion-dollar fraud in pharmacy claims; mentored analysts in secure data environments.</li>
+    </ul>
 
-  <h2>Projects</h2>
-  <div class="project-card">
-    <h3>Predicting Maternal Health Risks</h3>
-    <p>Built a logistic regression model to predict severe maternal morbidity using claims + vulnerability index data. Adjusted for sociodemographic and clinical variables.</p>
-    <p><strong>Tools:</strong> R, ggplot2, Snowflake</p>
-    <a href="https://github.com/yourusername/project-link">View on GitHub</a>
+    <h2 id="education">Education</h2>
+    <ul>
+      <li><strong>MSc, Health Data Science</strong> — London School of Hygiene and Tropical Medicine</li>
+      <li><strong>BS, Mathematics</strong> — Georgetown University (Minor: Computer Science)</li>
+    </ul>
+
+    <h2 id="skills">Technical Skills</h2>
+    <p>
+      <strong>Languages:</strong> Python, R, SQL, Java, Scala, C++<br />
+      <strong>Tools:</strong> AWS, Databricks, Snowflake, Tableau, Power BI, Alteryx, Git<br />
+      <strong>Specialties:</strong> Machine Learning, Deep Learning, Health Data Science, Data Engineering, Predictive Modeling
+    </p>
+
+    <h2 id="projects">Projects</h2>
+    <div class="project-card">
+      <h3>Predicting Maternal Health Risks</h3>
+      <p>Built a logistic regression model to predict severe maternal morbidity using claims + vulnerability index data. Adjusted for sociodemographic and clinical variables.</p>
+      <a href="https://github.com/yourusername/project-link">View on GitHub</a>
+    </div>
+
+    <div class="project-card">
+      <h3>Healthcare Claims Fraud Detection</h3>
+      <p>Developed a pipeline to analyze and flag anomalies in pharmacy claims datasets using pattern recognition and statistical thresholds, saving clients millions.</p>
+      <a href="https://github.com/yourusername/project-link">View on GitHub</a>
+    </div>
+
+    <div class="project-card">
+      <h3>Interactive COVID-19 Tracker Dashboard</h3>
+      <p>Created a responsive data dashboard tracking national case trends and hospitalizations, using APIs and real-time data updates.</p>
+      <a href="https://github.com/yourusername/project-link">View on GitHub</a>
+    </div>
   </div>
 
-  <div class="project-card">
-    <h3>Healthcare Claims Fraud Detection</h3>
-    <p>Developed a pipeline to analyze and flag anomalies in pharmacy claims datasets using pattern recognition and statistical thresholds, saving clients millions.</p>
-    <p><strong>Tools:</strong> Python, SQL, Alteryx</p>
-    <a href="https://github.com/yourusername/project-link">View on GitHub</a>
-  </div>
-
-  <div class="project-card">
-    <h3>Interactive COVID-19 Tracker Dashboard</h3>
-    <p>Created a responsive data dashboard tracking national case trends and hospitalizations, using APIs and real-time data updates.</p>
-    <p><strong>Tools:</strong> Python, Plotly Dash, HTML/CSS</p>
-    <a href="https://github.com/yourusername/project-link">View on GitHub</a>
-  </div>
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      html.dataset.theme = html.dataset.theme === "dark" ? "light" : "dark";
+    }
+  </script>
 
 </body>
 </html>
