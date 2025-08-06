@@ -129,25 +129,175 @@
       <strong>Specialties:</strong> Machine Learning, Deep Learning, Health Data Science, Data Engineering, Predictive Modeling
     </p>
 
-    <h2 id="projects">Projects</h2>
-    <div class="project-card">
-      <h3>Predicting Maternal Health Risks</h3>
-      <p>Built a logistic regression model to predict severe maternal morbidity using claims + vulnerability index data. Adjusted for sociodemographic and clinical variables.</p>
-      <a href="https://github.com/yourusername/project-link">View on GitHub</a>
+    <div class="project-card" style="border:1px solid #ccc; padding:16px; border-radius:8px; max-width:400px; font-family:Arial, sans-serif;">
+      <h3 style="margin-top:0;">Master’s Thesis: Deep Representation Learning of EHR Sequences</h3>
+      <p><strong>Tools:</strong> Python, PyTorch, ConvAE, UMAP, pandas</p>
+      <p><strong>Data:</strong> MIMIC-III (sample subset provided)</p>
+      <p><strong>Description:</strong><br>
+        Developed a convolutional autoencoder (ConvAE) to learn latent patient representations from longitudinal EHR data, enabling unsupervised clustering into clinically meaningful subgroups.
+      </p>
+      <ul style="padding-left:1em;">
+        <li><strong>Objective:</strong> Extract robust vector embeddings for patient stratification.</li>
+        <li><strong>Method:</strong> CNN-based autoencoder trained on fixed-length subsequences of medical concept codes.</li>
+        <li><strong>Evaluation:</strong> Token-level reconstruction accuracy (≈45%), UMAP visualization, cluster demographics analysis.</li>
+        <li><strong>Key Findings:</strong> Identified three clusters with distinct age, gender, and mortality profiles.</li>
+      </ul>
+      <p style="margin-bottom:0;"><strong>Repository:</strong> <a href="https://github.com/mficca/masters-project" target="_blank">github.com/mficca/masters-project</a></p>
     </div>
 
-    <div class="project-card">
-      <h3>Healthcare Claims Fraud Detection</h3>
-      <p>Developed a pipeline to analyze and flag anomalies in pharmacy claims datasets using pattern recognition and statistical thresholds, saving clients millions.</p>
-      <a href="https://github.com/yourusername/project-link">View on GitHub</a>
-    </div>
-
-    <div class="project-card">
-      <h3>Interactive COVID-19 Tracker Dashboard</h3>
-      <p>Created a responsive data dashboard tracking national case trends and hospitalizations, using APIs and real-time data updates.</p>
-      <a href="https://github.com/yourusername/project-link">View on GitHub</a>
-    </div>
+    
   </div>
+
+  <hr>
+
+  <h1>Patient Clustering Results</h1>
+  <p>In this section, we present an overview of patient clusters discovered using a Convolutional Autoencoder (ConvAE) on the <em>MIMIC-III</em> dataset. For privacy and reproducibility, a representative <strong>sample dataset</strong> is provided here. Below, you can see the UMAP projection of the learned patient representations, followed by a demographic summary table for each cluster.</p>
+
+  <h2>UMAP Clustering of Patient Representations</h2>
+  <div class="umap-figure">
+    <img src="sample_data/umap_clusters.png" alt="UMAP Clustering of Patient Vectors">
+    <figcaption>Figure 1: UMAP projection showing three patient clusters (0, 1, 2).</figcaption>
+  </div>
+
+  <h2>Cluster Demographics Summary</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Cluster</th>
+        <th>Age 0–10</th>
+        <th>10–20</th>
+        <th>20–30</th>
+        <th>30–40</th>
+        <th>40–50</th>
+        <th>50–60</th>
+        <th>60–70</th>
+        <th>70–80</th>
+        <th>80–90</th>
+        <th>90+</th>
+        <th>% Male</th>
+        <th>% Female</th>
+        <th>% Male ≥90</th>
+        <th>% Female ≥90</th>
+        <th>% Hospital Deaths</th>
+        <th>% Overall Deaths</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>0.0%</td>
+        <td>0.1%</td>
+        <td>1.3%</td>
+        <td>9.0%</td>
+        <td>8.1%</td>
+        <td>15.0%</td>
+        <td>19.1%</td>
+        <td>17.9%</td>
+        <td>13.9%</td>
+        <td>12.2%</td>
+        <td>3.6%</td>
+        <td>54.0%</td>
+        <td>46.0%</td>
+        <td>1.0%</td>
+        <td>2.6%</td>
+        <td>9.3%</td>
+        <td>29.0%</td>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>0.0%</td>
+        <td>0.3%</td>
+        <td>1.0%</td>
+        <td>2.3%</td>
+        <td>8.1%</td>
+        <td>15.8%</td>
+        <td>22.6%</td>
+        <td>25.8%</td>
+        <td>19.1%</td>
+        <td>5.0%</td>
+        <td>61.7%</td>
+        <td>38.3%</td>
+        <td>1.6%</td>
+        <td>3.5%</td>
+        <td>5.2%</td>
+        <td>31.0%</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>0.8%</td>
+        <td>0.9%</td>
+        <td>3.8%</td>
+        <td>4.2%</td>
+        <td>9.2%</td>
+        <td>17.4%</td>
+        <td>19.3%</td>
+        <td>20.7%</td>
+        <td>17.1%</td>
+        <td>6.6%</td>
+        <td>54.8%</td>
+        <td>45.2%</td>
+        <td>2.4%</td>
+        <td>4.3%</td>
+        <td>29.5%</td>
+        <td>57.6%</td>
+      </tr>
+    </tbody>
+    <caption>Table: Demographic and outcome summaries for each UMAP cluster.</caption>
+  </table>
+
+  <h2>Cluster Findings</h2>
+
+  <h3>Cluster 0</h3>
+  <p>
+    Cluster 0 contains patients predominantly in middle-age and early senior years 
+    (50–60: 19.1%, 60–70: 17.9%, 70–80: 13.9%). The group has a balanced gender 
+    distribution (54% male, 46% female) and moderate mortality rates 
+    (9.3% hospital deaths, 29.0% overall deaths). Very few patients are under age 20, 
+    indicating this cluster captures older, chronically treated individuals.
+  </p>
+
+  <h3>Cluster 1</h3>
+  <p>
+    Cluster 1 skews slightly older, with peaks in the 60–80 age range 
+    (60–70: 22.6%, 70–80: 25.8%). It has the highest male predominance (61.7%) 
+    and lower hospital mortality (5.2%), but a similar overall death rate (31.0%). 
+    This suggests a cohort with significant comorbidities but better acute survival.
+  </p>
+
+  <h3>Cluster 2</h3>
+  <p>
+    Cluster 2 exhibits the highest mortality (29.5% hospital deaths, 57.6% overall deaths) 
+    and a mixed age profile (60–70: 19.3%, 70–80: 20.7%, 80–90: 17.1%, 90+: 6.6%). 
+    The gender split is near even (54.8% male, 45.2% female). This cluster likely 
+    represents the most critically ill and frail patients in the study.
+  </p>
+
+
+  <h2>Cluster Interpretations</h2>
+  <p>
+    Across the three ConvAE–derived patient clusters, clear differences emerge in age profiles, gender balance, and mortality outcomes, suggesting distinct clinical phenotypes:
+  </p>
+  <ol>
+    <li>
+      <strong>Age and Gender Patterns</strong><br>
+      <em>Cluster 0</em> skews toward middle-aged adults (50–70), with balanced gender representation (54% male). Its low proportion of very elderly patients (90+ years: 3.6%) and minimal youth involvement (&lt;1% under age 10) point to a cohort of chronically managed, community-dwelling individuals.<br>
+      <em>Cluster 1</em> captures a slightly older population (peak 60–80 years) with stronger male predominance (62%). The steep rise in the 70–80 band (26%) suggests patients with age-related but relatively stable comorbidities.<br>
+      <em>Cluster 2</em> shows the broadest age distribution (higher shares in 80–90 and 90+ bands) and a near-even gender split, marking it as the frailest cohort.
+    </li>
+    <li>
+      <strong>Mortality Outcomes</strong><br>
+      <em>Cluster 0</em> shows moderate in-hospital (9.3%) and overall (29.0%) mortality, consistent with its younger, healthier composition.<br>
+      <em>Cluster 1</em>, despite older age, has lower hospital mortality (5.2%), implying better acute resilience or more elective care pathways, even though its overall mortality remains elevated (31.0%).<br>
+      <em>Cluster 2</em> exhibits the highest hospital (29.5%) and overall (57.6%) death rates, underscoring its identification of high-risk, severely ill patients.
+    </li>
+    <li>
+      <strong>Clinical Implications</strong><br>
+      These clusters could guide tailored care strategies: <em>Cluster 0</em> may benefit from chronic disease management; <em>Cluster 1</em> from preventive interventions to sustain acute stability; and <em>Cluster 2</em> from palliative or intensive support resources.
+    </li>
+  </ol>
+
+  <hr>
+
+
 
   <script>
     function toggleTheme() {
