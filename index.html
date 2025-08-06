@@ -150,16 +150,19 @@
 
   <hr>
 
-  <h1>Patient Clustering Results</h1>
+  <h1> Project Overviews </h1>
+
+
+  <h2>Patient Clustering Results</h2>
   <p>In this section, we present an overview of patient clusters discovered using a Convolutional Autoencoder (ConvAE) on the <em>MIMIC-III</em> dataset. For privacy and reproducibility, a representative <strong>sample dataset</strong> is provided here. Below, you can see the UMAP projection of the learned patient representations, followed by a demographic summary table for each cluster.</p>
 
-  <h2>UMAP Clustering of Patient Representations</h2>
+  <h4>UMAP Clustering of Patient Representations</h4>
   <div class="umap-figure">
     <img src="sample_data/umap_clusters.png" alt="UMAP Clustering of Patient Vectors">
     <figcaption>Figure 1: UMAP projection showing three patient clusters (0, 1, 2).</figcaption>
   </div>
 
-  <h2>Cluster Demographics Summary</h2>
+  <h4>Cluster Demographics Summary</h4>
   <table>
     <thead>
       <tr>
@@ -244,9 +247,9 @@
     <caption>Table: Demographic and outcome summaries for each UMAP cluster.</caption>
   </table>
 
-  <h2>Cluster Findings</h2>
+  <h4>Cluster Findings</h4>
 
-  <h3>Cluster 0</h3>
+  <h5>Cluster 0</h5>
   <p>
     Cluster 0 contains patients predominantly in middle-age and early senior years 
     (50–60: 19.1%, 60–70: 17.9%, 70–80: 13.9%). The group has a balanced gender 
@@ -255,7 +258,7 @@
     indicating this cluster captures older, chronically treated individuals.
   </p>
 
-  <h3>Cluster 1</h3>
+  <h5>Cluster 1</h5>
   <p>
     Cluster 1 skews slightly older, with peaks in the 60–80 age range 
     (60–70: 22.6%, 70–80: 25.8%). It has the highest male predominance (61.7%) 
@@ -263,7 +266,7 @@
     This suggests a cohort with significant comorbidities but better acute survival.
   </p>
 
-  <h3>Cluster 2</h3>
+  <h5>Cluster 2</h5>
   <p>
     Cluster 2 exhibits the highest mortality (29.5% hospital deaths, 57.6% overall deaths) 
     and a mixed age profile (60–70: 19.3%, 70–80: 20.7%, 80–90: 17.1%, 90+: 6.6%). 
@@ -272,7 +275,7 @@
   </p>
 
 
-  <h2>Cluster Interpretations</h2>
+  <h4>Cluster Interpretations</h4>
   <p>
     Across the three ConvAE–derived patient clusters, clear differences emerge in age profiles, gender balance, and mortality outcomes, suggesting distinct clinical phenotypes:
   </p>
