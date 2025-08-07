@@ -17,6 +17,11 @@
       --card-bg-dark: #1f1f1f;
       --muted: #6b7280;
       --border: #e5e7eb;
+
+      /* UMAP colors (tab10-like) */
+      --cluster-0: #1f77b4; /* blue  */
+      --cluster-1: #8c564b; /* brown */
+      --cluster-2: #17becf; /* cyan  */
     }
     html[data-theme="light"] { background: var(--bg-light); color: var(--text-light); }
     html[data-theme="dark"]  { background: var(--bg-dark);  color: var(--text-dark);  }
@@ -33,65 +38,31 @@
     a:hover { text-decoration: underline; }
 
     /* NAV */
-    nav {
-      background: var(--primary);
-      color: #fff;
-    }
+    nav { background: var(--primary); color: #fff; }
     .nav-inner {
-      max-width: 980px;
-      margin: 0 auto;
-      padding: .75rem 1rem;
-      display: flex;
-      gap: 1rem;
-      align-items: center;
-      justify-content: center;
-      flex-wrap: wrap;
+      max-width: 980px; margin: 0 auto; padding: .75rem 1rem;
+      display: flex; gap: 1rem; align-items: center; justify-content: center; flex-wrap: wrap;
     }
     nav a { color: #fff; font-weight: 600; }
 
     /* WRAPPER */
-    .container {
-      max-width: 980px;
-      margin: 0 auto;
-      padding: 2rem 1.25rem 3rem;
-    }
+    .container { max-width: 980px; margin: 0 auto; padding: 2rem 1.25rem 3rem; }
 
     /* HEADER / HERO */
     .header {
-      display: grid;
-      grid-template-columns: 160px 1fr;
-      gap: 1.25rem;
-      align-items: center;
+      display: grid; grid-template-columns: 160px 1fr; gap: 1.25rem; align-items: center;
     }
-    @media (max-width: 640px) {
-      .header { grid-template-columns: 1fr; text-align: center; }
-    }
+    @media (max-width: 640px) { .header { grid-template-columns: 1fr; text-align: center; } }
     .avatar {
-      width: 160px;
-      height: 160px;
-      border-radius: 50%;
-      overflow: hidden;
-      box-shadow: 0 6px 18px rgba(0,0,0,.12);
-      border: 2px solid var(--border);
-      margin: 0 auto;
+      width: 160px; height: 160px; border-radius: 50%; overflow: hidden;
+      box-shadow: 0 6px 18px rgba(0,0,0,.12); border: 2px solid var(--border); margin: 0 auto;
     }
-    .avatar img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      max-height: none !important; /* ensure full image is shown */
-    }
+    .avatar img { width: 100%; height: 100%; object-fit: cover; max-height: none !important; }
     .title h1 { margin: 0 0 .25rem; font-size: 1.9rem; }
     .contact { color: var(--muted); margin-top: .25rem; }
     .toggle-btn {
-      margin-top: .75rem;
-      cursor: pointer;
-      background: transparent;
-      border: 2px solid var(--primary);
-      padding: .4rem .85rem;
-      font-size: 0.95rem;
-      color: var(--primary);
-      border-radius: 8px;
+      margin-top: .75rem; cursor: pointer; background: transparent; border: 2px solid var(--primary);
+      padding: .4rem .85rem; font-size: 0.95rem; color: var(--primary); border-radius: 8px;
     }
 
     /* SECTIONS */
@@ -102,36 +73,38 @@
 
     /* CARD */
     .project-card {
-      background: var(--card-bg-light);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 1rem 1.1rem;
-      margin: 1rem 0 1.5rem;
-      box-shadow: 0 6px 22px rgba(0,0,0,.06);
+      background: var(--card-bg-light); border: 1px solid var(--border); border-radius: 10px;
+      padding: 1rem 1.1rem; margin: 1rem 0 1.5rem; box-shadow: 0 6px 22px rgba(0,0,0,.06);
     }
     html[data-theme="dark"] .project-card { background: var(--card-bg-dark); border-color: #2a2a2a; }
 
     /* MEDIA / FIGURES */
     figure, .umap-figure { margin: 1rem 0; text-align: center; }
     figcaption { color: var(--muted); font-size: .9rem; margin-top: .35rem; }
-    img {
-      max-width: 100%;
-      height: auto;
-      display: block;
-      margin: 0 auto;
-      max-height: none !important; /* prevent any theme from capping */
-    }
+    img { max-width: 100%; height: auto; display: block; margin: 0 auto; max-height: none !important; }
     .image-link { display: inline-block; border-radius: 6px; overflow: hidden; }
-    .image-frame {
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      box-shadow: 0 6px 18px rgba(0,0,0,.08);
-    }
+    .image-frame { border: 1px solid var(--border); border-radius: 8px; box-shadow: 0 6px 18px rgba(0,0,0,.08); }
 
     /* TYPOGRAPHY HELPERS */
     .narrow { max-width: 760px; margin: 0 auto; }
     .muted { color: var(--muted); }
     hr { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
+
+    /* === Cluster Findings styling === */
+    .cluster-wrap { max-width: 760px; margin: 0 auto; }
+    #cluster-findings { margin-bottom: 2rem; }
+    #cluster-interpret { margin-top: 2rem; margin-bottom: 1.5rem; }
+
+    .cluster-block { margin: 1.25rem auto 2rem; line-height: 1.7; }
+    .cluster-title {
+      text-align: center; font-size: 1.45rem; margin: 0 0 .35rem 0; font-weight: 700;
+    }
+    .cluster-text { margin: 0; }
+
+    /* apply UMAP colors to each cluster block (title + text) */
+    .cluster-block.c0 { color: var(--cluster-0); }
+    .cluster-block.c1 { color: var(--cluster-1); }
+    .cluster-block.c2 { color: var(--cluster-2); }
   </style>
 </head>
 <body>
@@ -252,59 +225,66 @@
         >
         <figcaption>Patient Clusters: Demographics &amp; Outcomes</figcaption>
       </figure>
-      
 
-      <h4>Cluster Findings</h4>
+      <!-- Cluster Findings (colored, centered headings; fixed spacing) -->
+      <section id="cluster-findings" class="cluster-wrap">
+        <h3>Cluster Findings</h3>
 
-      <section class="narrow" style="max-width:760px; margin:0 auto; line-height:1.6;">
-      <h5>Cluster 0</h5>
-      <p>
-        Cluster 0 contains patients predominantly in middle-age and early senior years
-        (50–60: 19.1%, 60–70: 17.9%, 70–80: 13.9%). The group has a balanced gender
-        distribution (54% male, 46% female) and moderate mortality rates
-        (9.3% hospital deaths, 29.0% overall deaths). Very few patients are under age 20,
-        indicating this cluster captures older, chronically treated individuals.
-      </p>
+        <article class="cluster-block c0">
+          <h4 class="cluster-title">Cluster 0</h4>
+          <p class="cluster-text">
+            Cluster 0 contains patients predominantly in middle-age and early senior years
+            (50–60: 19.1%, 60–70: 17.9%, 70–80: 13.9%). The group has a balanced gender
+            distribution (54% male, 46% female) and moderate mortality rates
+            (9.3% hospital deaths, 29.0% overall deaths). Very few patients are under age 20,
+            indicating this cluster captures older, chronically treated individuals.
+          </p>
+        </article>
 
-      <h5>Cluster 1</h5>
-      <p>
-        Cluster 1 skews slightly older, with peaks in the 60–80 age range
-        (60–70: 22.6%, 70–80: 25.8%). It has the highest male predominance (61.7%)
-        and lower hospital mortality (5.2%), but a similar overall death rate (31.0%).
-        This suggests a cohort with significant comorbidities but better acute survival.
-      </p>
+        <article class="cluster-block c1">
+          <h4 class="cluster-title">Cluster 1</h4>
+          <p class="cluster-text">
+            Cluster 1 skews slightly older, with peaks in the 60–80 age range
+            (60–70: 22.6%, 70–80: 25.8%). It has the highest male predominance (61.7%)
+            and lower hospital mortality (5.2%), but a similar overall death rate (31.0%).
+            This suggests a cohort with significant comorbidities but better acute survival.
+          </p>
+        </article>
 
-      <h5>Cluster 2</h5>
-      <p>
-        Cluster 2 exhibits the highest mortality (29.5% hospital deaths, 57.6% overall deaths)
-        and a mixed age profile (60–70: 19.3%, 70–80: 20.7%, 80–90: 17.1%, 90+: 6.6%).
-        The gender split is near even (54.8% male, 45.2% female). This cluster likely
-        represents the most critically ill and frail patients in the study.
-      </p>
+        <article class="cluster-block c2">
+          <h4 class="cluster-title">Cluster 2</h4>
+          <p class="cluster-text">
+            Cluster 2 exhibits the highest mortality (29.5% hospital deaths, 57.6% overall deaths)
+            and a mixed age profile (60–70: 19.3%, 70–80: 20.7%, 80–90: 17.1%, 90+: 6.6%).
+            The gender split is near even (54.8% male, 45.2% female). This cluster likely
+            represents the most critically ill and frail patients in the study.
+          </p>
+        </article>
+      </section>
 
-        <h4 style="margin:1rem 0 .5rem;">Cluster Interpretations</h4>
-        <p style="white-space:pre-line; margin:0.6rem 0;">
+      <!-- Clean separation before interpretations -->
+      <section id="cluster-interpret" class="cluster-wrap">
+        <h4>Cluster Interpretations</h4>
+        <p>
           Across the three ConvAE–derived patient clusters, clear differences emerge in age profiles, gender balance, and mortality outcomes, suggesting distinct clinical phenotypes:
         </p>
-        <ol style="padding-left:1.2rem; margin:0.6rem 0;">
+        <ol style="padding-left: 1.2rem; margin: 0.6rem 0;">
           <li>
             <strong>Age and Gender Patterns</strong>
             <p><em>Cluster 0</em> skews toward middle-aged adults (50–70), with balanced gender representation (54% male). Its low proportion of very elderly patients (90+ years: 3.6%) and minimal youth involvement (&lt;1% under age 10) point to a cohort of chronically managed, community-dwelling individuals.</p>
             <p><em>Cluster 1</em> captures a slightly older population (peak 60–80 years) with stronger male predominance (62%). The steep rise in the 70–80 band (26%) suggests patients with age-related but relatively stable comorbidities.</p>
             <p><em>Cluster 2</em> shows the broadest age distribution (higher shares in 80–90 and 90+ bands) and a near-even gender split, marking it as the frailest cohort.</p>
           </li>
-        
           <li>
             <strong>Mortality Outcomes</strong>
             <p><em>Cluster 0</em> shows moderate in-hospital (9.3%) and overall (29.0%) mortality, consistent with its younger, healthier composition.</p>
             <p><em>Cluster 1</em>, despite older age, has lower hospital mortality (5.2%), implying better acute resilience or more elective care pathways, even though its overall mortality remains elevated (31.0%).</p>
             <p><em>Cluster 2</em> exhibits the highest hospital (29.5%) and overall (57.6%) death rates, underscoring its identification of high-risk, severely ill patients.</p>
           </li>
-        
           <li>
             <strong>Clinical Implications</strong>
             <p>These clusters could guide tailored care strategies: <em>Cluster 0</em> may benefit from chronic disease management; <em>Cluster 1</em> from preventive interventions to sustain acute stability; and <em>Cluster 2</em> from palliative or intensive support resources.</p>
-          </li>        
+          </li>
         </ol>
       </section>
     </section>
