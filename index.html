@@ -18,14 +18,17 @@
       --muted: #6b7280;
       --border: #e5e7eb;
 
-      /* UMAP colors (tab10-like) */
+      /* UMAP colors (adjust if your legend differs) */
       --cluster-0: #1f77b4; /* blue  */
       --cluster-1: #8c564b; /* brown */
       --cluster-2: #17becf; /* cyan  */
     }
+
     html[data-theme="light"] { background: var(--bg-light); color: var(--text-light); }
     html[data-theme="dark"]  { background: var(--bg-dark);  color: var(--text-dark);  }
+
     * { box-sizing: border-box; }
+
     body {
       margin: 0;
       font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
@@ -34,6 +37,7 @@
       text-rendering: optimizeLegibility;
       font-size: 17px;
     }
+
     a { color: var(--primary); text-decoration: none; }
     a:hover { text-decoration: underline; }
 
@@ -90,7 +94,17 @@
     .muted { color: var(--muted); }
     hr { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
 
-    /* === Cluster Findings styling === */
+    /* Centered & larger section titles */
+    .section-title {
+      text-align: center;
+      font-size: 1.6rem;
+      margin: 1.25rem 0 .75rem 0;
+      line-height: 1.25;
+    }
+    .title-blue  { color: var(--primary); } /* blue */
+    .title-black { color: #000; }           /* force black */
+
+    /* Cluster Findings styling */
     .cluster-wrap { max-width: 760px; margin: 0 auto; }
     #cluster-findings { margin-bottom: 2rem; }
     #cluster-interpret { margin-top: 2rem; margin-bottom: 1.5rem; }
@@ -99,12 +113,12 @@
     .cluster-title {
       text-align: center; font-size: 1.45rem; margin: 0 0 .35rem 0; font-weight: 700;
     }
-    .cluster-text { margin: 0; }
+    .cluster-text { margin: 0; } /* keep body text default color */
 
-    /* apply UMAP colors to each cluster block (title + text) */
-    .cluster-block.c0 { color: var(--cluster-0); }
-    .cluster-block.c1 { color: var(--cluster-1); }
-    .cluster-block.c2 { color: var(--cluster-2); }
+    /* color only the headings (titles), not the text */
+    .cluster-title.c0 { color: var(--cluster-0); }
+    .cluster-title.c1 { color: var(--cluster-1); }
+    .cluster-title.c2 { color: var(--cluster-2); }
   </style>
 </head>
 <body>
@@ -202,12 +216,15 @@
 
     <!-- PROJECT OVERVIEWS -->
     <section class="section narrow">
-      <h1>Project Overviews</h1>
+      <!-- renamed, centered, blue -->
+      <h1 class="section-title title-blue">
+        Master’s Thesis: Deep Representation Learning of EHR Sequences
+      </h1>
 
-      <h2>Patient Clustering Results</h2>
-      <p>In this section, we present an overview of patient clusters discovered using a Convolutional Autoencoder (ConvAE) on the <em>MIMIC-III</em> dataset. For privacy and reproducibility, a representative <strong>sample dataset</strong> is provided here. Below, you can see the UMAP projection of the learned patient representations, followed by a demographic summary table for each cluster.</p>
+      <!-- centered + black -->
+      <h2 class="section-title title-black">Patient Clustering Results</h2>
 
-      <h4>UMAP Clustering of Patient Representations</h4>
+      <h4 class="section-title">UMAP Clustering of Patient Representations</h4>
       <figure class="umap-figure">
         <a class="image-link" href="sample_data/umap_kmeans_k3.png" target="_blank" rel="noopener">
           <img class="image-frame" src="sample_data/umap_kmeans_k3.png" alt="UMAP Clustering of Patient Vectors">
@@ -215,7 +232,7 @@
         <figcaption>Figure 1: UMAP projection showing three patient clusters (0, 1, 2).</figcaption>
       </figure>
 
-      <h4>Cluster Demographics Summary</h4>
+      <h4 class="section-title">Cluster Demographics Summary</h4>
       <figure style="margin:1rem 0; text-align:center; overflow:visible;">
         <img
           src="sample_data/Patient_Clusters_Demographics_Outcomes.png"
@@ -226,12 +243,12 @@
         <figcaption>Patient Clusters: Demographics &amp; Outcomes</figcaption>
       </figure>
 
-      <!-- Cluster Findings (colored, centered headings; fixed spacing) -->
+      <!-- Cluster Findings -->
       <section id="cluster-findings" class="cluster-wrap">
-        <h3>Cluster Findings</h3>
+        <h3 class="section-title">Cluster Findings</h3>
 
-        <article class="cluster-block c0">
-          <h4 class="cluster-title">Cluster 0</h4>
+        <article class="cluster-block">
+          <h4 class="cluster-title c0">Cluster 0</h4>
           <p class="cluster-text">
             Cluster 0 contains patients predominantly in middle-age and early senior years
             (50–60: 19.1%, 60–70: 17.9%, 70–80: 13.9%). The group has a balanced gender
@@ -241,8 +258,8 @@
           </p>
         </article>
 
-        <article class="cluster-block c1">
-          <h4 class="cluster-title">Cluster 1</h4>
+        <article class="cluster-block">
+          <h4 class="cluster-title c1">Cluster 1</h4>
           <p class="cluster-text">
             Cluster 1 skews slightly older, with peaks in the 60–80 age range
             (60–70: 22.6%, 70–80: 25.8%). It has the highest male predominance (61.7%)
@@ -251,8 +268,8 @@
           </p>
         </article>
 
-        <article class="cluster-block c2">
-          <h4 class="cluster-title">Cluster 2</h4>
+        <article class="cluster-block">
+          <h4 class="cluster-title c2">Cluster 2</h4>
           <p class="cluster-text">
             Cluster 2 exhibits the highest mortality (29.5% hospital deaths, 57.6% overall deaths)
             and a mixed age profile (60–70: 19.3%, 70–80: 20.7%, 80–90: 17.1%, 90+: 6.6%).
@@ -262,9 +279,9 @@
         </article>
       </section>
 
-      <!-- Clean separation before interpretations -->
+      <!-- Cluster Interpretations -->
       <section id="cluster-interpret" class="cluster-wrap">
-        <h4>Cluster Interpretations</h4>
+        <h4 class="section-title">Cluster Interpretations</h4>
         <p>
           Across the three ConvAE–derived patient clusters, clear differences emerge in age profiles, gender balance, and mortality outcomes, suggesting distinct clinical phenotypes:
         </p>
