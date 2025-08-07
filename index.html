@@ -172,54 +172,65 @@
 
   <h4>Cluster Findings</h4>
 
-  <h5>Cluster 0</h5>
-  <p>
-    Cluster 0 contains patients predominantly in middle-age and early senior years 
-    (50–60: 19.1%, 60–70: 17.9%, 70–80: 13.9%). The group has a balanced gender 
-    distribution (54% male, 46% female) and moderate mortality rates 
-    (9.3% hospital deaths, 29.0% overall deaths). Very few patients are under age 20, 
-    indicating this cluster captures older, chronically treated individuals.
-  </p>
-
-  <h5>Cluster 1</h5>
-  <p>
-    Cluster 1 skews slightly older, with peaks in the 60–80 age range 
-    (60–70: 22.6%, 70–80: 25.8%). It has the highest male predominance (61.7%) 
-    and lower hospital mortality (5.2%), but a similar overall death rate (31.0%). 
-    This suggests a cohort with significant comorbidities but better acute survival.
-  </p>
-
-  <h5>Cluster 2</h5>
-  <p>
-    Cluster 2 exhibits the highest mortality (29.5% hospital deaths, 57.6% overall deaths) 
-    and a mixed age profile (60–70: 19.3%, 70–80: 20.7%, 80–90: 17.1%, 90+: 6.6%). 
-    The gender split is near even (54.8% male, 45.2% female). This cluster likely 
-    represents the most critically ill and frail patients in the study.
-  </p>
-
-
-  <h4>Cluster Interpretations</h4>
-  <p>
-    Across the three ConvAE–derived patient clusters, clear differences emerge in age profiles, gender balance, and mortality outcomes, suggesting distinct clinical phenotypes:
-  </p>
-  <ol>
-    <li>
-      <strong>Age and Gender Patterns</strong><br>
-      <em>Cluster 0</em> skews toward middle-aged adults (50–70), with balanced gender representation (54% male). Its low proportion of very elderly patients (90+ years: 3.6%) and minimal youth involvement (&lt;1% under age 10) point to a cohort of chronically managed, community-dwelling individuals.<br>
-      <em>Cluster 1</em> captures a slightly older population (peak 60–80 years) with stronger male predominance (62%). The steep rise in the 70–80 band (26%) suggests patients with age-related but relatively stable comorbidities.<br>
-      <em>Cluster 2</em> shows the broadest age distribution (higher shares in 80–90 and 90+ bands) and a near-even gender split, marking it as the frailest cohort.
-    </li>
-    <li>
-      <strong>Mortality Outcomes</strong><br>
-      <em>Cluster 0</em> shows moderate in-hospital (9.3%) and overall (29.0%) mortality, consistent with its younger, healthier composition.<br>
-      <em>Cluster 1</em>, despite older age, has lower hospital mortality (5.2%), implying better acute resilience or more elective care pathways, even though its overall mortality remains elevated (31.0%).<br>
-      <em>Cluster 2</em> exhibits the highest hospital (29.5%) and overall (57.6%) death rates, underscoring its identification of high-risk, severely ill patients.
-    </li>
-    <li>
-      <strong>Clinical Implications</strong><br>
-      These clusters could guide tailored care strategies: <em>Cluster 0</em> may benefit from chronic disease management; <em>Cluster 1</em> from preventive interventions to sustain acute stability; and <em>Cluster 2</em> from palliative or intensive support resources.
-    </li>
-  </ol>
+  <section style="max-width:760px; margin:0 auto; line-height:1.6;">
+    <h5>Cluster 0</h5>
+    <p style="white-space:pre-line; margin:0.6rem 0;">
+      Cluster 0 contains patients predominantly in middle-age and early senior years 
+      (50–60: 19.1%, 60–70: 17.9%, 70–80: 13.9%). The group has a balanced gender 
+      distribution (54% male, 46% female) and moderate mortality rates 
+      (9.3% hospital deaths, 29.0% overall deaths). Very few patients are under age 20, 
+      indicating this cluster captures older, chronically treated individuals.
+    </p>
+  
+    <h5>Cluster 1</h5>
+    <p style="white-space:pre-line; margin:0.6rem 0;">
+      Cluster 1 skews slightly older, with peaks in the 60–80 age range 
+      (60–70: 22.6%, 70–80: 25.8%). It has the highest male predominance (61.7%) 
+      and lower hospital mortality (5.2%), but a similar overall death rate (31.0%). 
+      This suggests a cohort with significant comorbidities but better acute survival.
+    </p>
+  
+    <h5>Cluster 2</h5>
+    <p style="white-space:pre-line; margin:0.6rem 0;">
+      Cluster 2 exhibits the highest mortality (29.5% hospital deaths, 57.6% overall deaths) 
+      and a mixed age profile (60–70: 19.3%, 70–80: 20.7%, 80–90: 17.1%, 90+: 6.6%). 
+      The gender split is near even (54.8% male, 45.2% female). This cluster likely 
+      represents the most critically ill and frail patients in the study.
+    </p>
+  
+    <h4 style="margin:1rem 0 .5rem;">Cluster Interpretations</h4>
+    <p style="white-space:pre-line; margin:0.6rem 0;">
+      Across the three ConvAE–derived patient clusters, clear differences emerge in age profiles, gender balance, and mortality outcomes, suggesting distinct clinical phenotypes:
+    </p>
+    <ol style="padding-left:1.2rem; margin:0.6rem 0;">
+      <li style="margin-bottom:0.6rem;">
+        <strong>Age and Gender Patterns</strong><br>
+        <em>Cluster 0</em> skews toward middle-aged adults (50–70), with balanced gender representation (54% male).<br> 
+            Its low proportion of very elderly patients (90+ years: 3.6%) and minimal youth involvement (&lt;1% under age 10) <br> 
+            point to a cohort of chronically managed, community-dwelling individuals.<br>
+        <em>Cluster 1</em> captures a slightly older population (peak 60–80 years) with stronger male predominance (62%).<br> 
+            The steep rise in the 70–80 band (26%) suggests patients with age-related but relatively stable comorbidities.<br>
+        <em>Cluster 2</em> shows the broadest age distribution (higher shares in 80–90 and 90+ bands) and a near-even <br> 
+            gender split, marking it as the frailest cohort.
+      </li>
+      <li style="margin-bottom:0.6rem;">
+        <strong>Mortality Outcomes</strong><br>
+        <em>Cluster 0</em> shows moderate in-hospital (9.3%) and overall (29.0%) mortality,<br> 
+            consistent with its younger, healthier composition.<br>
+        <em>Cluster 1</em>, despite older age, has lower hospital mortality (5.2%), implying better<br> 
+            acute resilience or more elective care pathways, even though its overall mortality remains elevated (31.0%).<br>
+        <em>Cluster 2</em> exhibits the highest hospital (29.5%) and overall (57.6%) death rates, <br> 
+            underscoring its identification of high-risk, severely ill patients.
+      </li>
+      <li>
+        <strong>Clinical Implications</strong><br>
+        These clusters could guide tailored care strategies: 
+        <em>Cluster 0</em> may benefit from chronic disease management; 
+        <em>Cluster 1</em> from preventive interventions to sustain acute stability;  
+        <em>Cluster 2</em> and from palliative or intensive support resources.
+      </li>
+    </ol>
+  </section>
 
   <hr>
 
