@@ -8,233 +8,313 @@
   <meta name="description" content="Michael Ficca | Data Scientist Portfolio showcasing projects in healthcare analytics, machine learning, and data science." />
   <style>
     :root {
-      --bg-light: #f5f5f5;
-      --text-light: #333;
-      --bg-dark: #1e1e1e;
+      --bg-light: #f7f7f9;
+      --text-light: #222;
+      --bg-dark: #141414;
       --text-dark: #ddd;
-      --primary: #007acc;
+      --primary: #0b6cff;
       --card-bg-light: #fff;
-      --card-bg-dark: #2a2a2a;
+      --card-bg-dark: #1f1f1f;
+      --muted: #6b7280;
+      --border: #e5e7eb;
     }
-    [data-theme="light"] {
-      background-color: var(--bg-light);
-      color: var(--text-light);
-    }
-    [data-theme="dark"] {
-      background-color: var(--bg-dark);
-      color: var(--text-dark);
-    }
+    html[data-theme="light"] { background: var(--bg-light); color: var(--text-light); }
+    html[data-theme="dark"]  { background: var(--bg-dark);  color: var(--text-dark);  }
+    * { box-sizing: border-box; }
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
-      padding: 0;
-      line-height: 1.8;
-      font-size: 18px;
-      transition: background-color 0.3s, color 0.3s;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      font-size: 17px;
     }
-    .container {
-      max-width: 800px;
-      margin: auto;
-      padding: 2rem 1rem;
-    }
-    h1, h2 {
-      color: var(--primary);
-    }
-    a {
-      color: var(--primary);
-    }
+    a { color: var(--primary); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* NAV */
     nav {
-      background-color: var(--primary);
-      color: white;
-      padding: 1rem;
-      text-align: center;
+      background: var(--primary);
+      color: #fff;
     }
-    nav a {
-      margin: 0 1rem;
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
+    .nav-inner {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: .75rem 1rem;
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
     }
+    nav a { color: #fff; font-weight: 600; }
+
+    /* WRAPPER */
+    .container {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 3rem;
+    }
+
+    /* HEADER / HERO */
+    .header {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 1.25rem;
+      align-items: center;
+    }
+    @media (max-width: 640px) {
+      .header { grid-template-columns: 1fr; text-align: center; }
+    }
+    .avatar {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      overflow: hidden;
+      box-shadow: 0 6px 18px rgba(0,0,0,.12);
+      border: 2px solid var(--border);
+      margin: 0 auto;
+    }
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      max-height: none !important; /* ensure full image is shown */
+    }
+    .title h1 { margin: 0 0 .25rem; font-size: 1.9rem; }
+    .contact { color: var(--muted); margin-top: .25rem; }
     .toggle-btn {
-      margin-top: 1rem;
+      margin-top: .75rem;
       cursor: pointer;
-      background: none;
+      background: transparent;
       border: 2px solid var(--primary);
-      padding: 0.5rem 1rem;
-      font-size: 16px;
+      padding: .4rem .85rem;
+      font-size: 0.95rem;
       color: var(--primary);
-      border-radius: 6px;
-    }
-    .project-card {
-      background-color: var(--card-bg-light);
       border-radius: 8px;
-      padding: 1rem;
-      margin-bottom: 1.5rem;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
-    [data-theme="dark"] .project-card {
-      background-color: var(--card-bg-dark);
+
+    /* SECTIONS */
+    h2 { color: var(--primary); margin-top: 2rem; margin-bottom: .5rem; }
+    h4 { margin-top: 1.25rem; }
+    .section { margin-top: 1.25rem; }
+    .list { padding-left: 1.1rem; margin: .5rem 0; }
+
+    /* CARD */
+    .project-card {
+      background: var(--card-bg-light);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem 1.1rem;
+      margin: 1rem 0 1.5rem;
+      box-shadow: 0 6px 22px rgba(0,0,0,.06);
     }
-    @media (max-width: 600px) {
-      .container {
-        padding: 1rem;
-      }
+    html[data-theme="dark"] .project-card { background: var(--card-bg-dark); border-color: #2a2a2a; }
+
+    /* MEDIA / FIGURES */
+    figure, .umap-figure { margin: 1rem 0; text-align: center; }
+    figcaption { color: var(--muted); font-size: .9rem; margin-top: .35rem; }
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      max-height: none !important; /* prevent any theme from capping */
     }
+    .image-link { display: inline-block; border-radius: 6px; overflow: hidden; }
+    .image-frame {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      box-shadow: 0 6px 18px rgba(0,0,0,.08);
+    }
+
+    /* TYPOGRAPHY HELPERS */
+    .narrow { max-width: 760px; margin: 0 auto; }
+    .muted { color: var(--muted); }
+    hr { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
   </style>
 </head>
 <body>
 
   <nav>
-    <a href="#about">About</a>
-    <a href="#career">Career</a>
-    <a href="#education">Education</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
+    <div class="nav-inner">
+      <a href="#about">About</a>
+      <a href="#career">Career</a>
+      <a href="#education">Education</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+    </div>
   </nav>
 
   <div class="container">
-  <img src="LinkedIn_Photo.jpeg" alt="Photo of Michael Ficca" style="width:160px; border-radius: 50%; margin-bottom: 1rem;" />
-    <h1>Michael Ficca</h1>
-    <p><strong>Email:</strong> <a href="mailto:ficcam66@gmail.com">ficcam66@gmail.com</a> | <strong>Phone:</strong> (301) 785-0056</p>
-    <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/michael-ficca-36a238139">www.linkedin.com/in/michael-ficca-36a238139</a></p>
+    <!-- HEADER -->
+    <header class="header">
+      <div class="avatar">
+        <img src="LinkedIn_Photo.jpeg" alt="Photo of Michael Ficca">
+      </div>
+      <div class="title">
+        <h1>Michael Ficca</h1>
+        <p class="contact">
+          <strong>Email:</strong> <a href="mailto:ficcam66@gmail.com">ficcam66@gmail.com</a> &nbsp;|&nbsp;
+          <strong>Phone:</strong> (301) 785-0056
+        </p>
+        <p class="contact">
+          <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/michael-ficca-36a238139" target="_blank" rel="noopener">www.linkedin.com/in/michael-ficca-36a238139</a>
+        </p>
+        <button class="toggle-btn" onclick="toggleTheme()">Toggle Dark/Light Theme</button>
+      </div>
+    </header>
 
-    <button class="toggle-btn" onclick="toggleTheme()">Toggle Dark/Light Theme</button>
-
-    <h2 id="about">About Me</h2>
-    <p>
-      I am a data scientist and analytical professional with deep experience across healthcare, biotech, and SaaS platforms. My work combines advanced analytics, machine learning, statistical modeling, and intuitive data visualization to generate actionable insights that inform high-stakes decisions in secure, fast-paced environments.
-    </p>
-    <p>
-      My passion lies in uncovering meaningful patterns in complex datasets—particularly those involving healthcare utilization, patient behavior, and population-level disparities. I specialize in working with sensitive, large-scale data in secure environments, applying methods ranging from survival analysis to deep learning and predictive modeling.
-    </p>
-
-    <h2 id="career">Career Highlights</h2>
-    <ul>
-      <li><strong>Surgo Health (2022–Present)</strong>: Lead analytics on healthcare claims and behavioral datasets; develop models to detect risk and optimize interventions using tools like AWS, Snowflake, and Python.</li>
-      <li><strong>JMAN Group</strong>: Built predictive ML models for operational efficiency in compliance-heavy environments.</li>
-      <li><strong>AstraZeneca</strong>: Conducted survival analysis on anonymized COPD patient data to support clinical decisions.</li>
-      <li><strong>IQVIA</strong>: Detected multimillion-dollar fraud in pharmacy claims; mentored analysts in secure data environments.</li>
-    </ul>
-
-    <h2 id="education">Education</h2>
-    <ul>
-      <li><strong>MSc, Health Data Science</strong> — London School of Hygiene and Tropical Medicine</li>
-      <li><strong>BS, Mathematics</strong> — Georgetown University (Minor: Computer Science)</li>
-    </ul>
-
-    <h2 id="skills">Technical Skills</h2>
-    <p>
-      <strong>Languages:</strong> Python, R, SQL, Java, Scala, C++<br />
-      <strong>Tools:</strong> AWS, Databricks, Snowflake, Tableau, Power BI, Alteryx, Git<br />
-      <strong>Specialties:</strong> Machine Learning, Deep Learning, Health Data Science, Data Engineering, Predictive Modeling
-    </p>
-
-    <div class="project-card" style="border:1px solid #ccc; padding:16px; border-radius:8px; max-width:400px; font-family:Arial, sans-serif;">
-      <h3 style="margin-top:0;">Master’s Thesis: Deep Representation Learning of EHR Sequences</h3>
-      <p><strong>Tools:</strong> Python, PyTorch, ConvAE, UMAP, pandas</p>
-      <p><strong>Data:</strong> MIMIC-III (sample subset provided)</p>
-      <p><strong>Description:</strong><br>
-        Developed a convolutional autoencoder (ConvAE) to learn latent patient representations from longitudinal EHR data, enabling unsupervised clustering into clinically meaningful subgroups.
+    <!-- ABOUT -->
+    <section id="about" class="section narrow">
+      <h2>About Me</h2>
+      <p>
+        I am a data scientist and analytical professional with deep experience across healthcare, biotech, and SaaS platforms. My work combines advanced analytics, machine learning, statistical modeling, and intuitive data visualization to generate actionable insights that inform high-stakes decisions in secure, fast-paced environments.
       </p>
-      <ul style="padding-left:1em;">
-        <li><strong>Objective:</strong> Extract robust vector embeddings for patient stratification.</li>
-        <li><strong>Method:</strong> CNN-based autoencoder trained on fixed-length subsequences of medical concept codes.</li>
-        <li><strong>Evaluation:</strong> Token-level reconstruction accuracy (≈45%), UMAP visualization, cluster demographics analysis.</li>
-        <li><strong>Key Findings:</strong> Identified three clusters with distinct age, gender, and mortality profiles.</li>
+      <p>
+        My passion lies in uncovering meaningful patterns in complex datasets—particularly those involving healthcare utilization, patient behavior, and population-level disparities. I specialize in working with sensitive, large-scale data in secure environments, applying methods ranging from survival analysis to deep learning and predictive modeling.
+      </p>
+    </section>
+
+    <!-- CAREER -->
+    <section id="career" class="section narrow">
+      <h2>Career Highlights</h2>
+      <ul class="list">
+        <li><strong>Surgo Health (2022–Present)</strong>: Lead analytics on healthcare claims and behavioral datasets; develop models to detect risk and optimize interventions using tools like AWS, Snowflake, and Python.</li>
+        <li><strong>JMAN Group</strong>: Built predictive ML models for operational efficiency in compliance-heavy environments.</li>
+        <li><strong>AstraZeneca</strong>: Conducted survival analysis on anonymized COPD patient data to support clinical decisions.</li>
+        <li><strong>IQVIA</strong>: Detected multimillion-dollar fraud in pharmacy claims; mentored analysts in secure data environments.</li>
       </ul>
-      <p style="margin-bottom:0;"><strong>Repository:</strong> <a href="https://github.com/mficca/masters-project" target="_blank">github.com/mficca/masters-project</a></p>
-    </div>
+    </section>
 
-    
+    <!-- EDUCATION -->
+    <section id="education" class="section narrow">
+      <h2>Education</h2>
+      <ul class="list">
+        <li><strong>MSc, Health Data Science</strong> — London School of Hygiene and Tropical Medicine</li>
+        <li><strong>BS, Mathematics</strong> — Georgetown University (Minor: Computer Science)</li>
+      </ul>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="section narrow">
+      <h2>Technical Skills</h2>
+      <p>
+        <strong>Languages:</strong> Python, R, SQL, Java, Scala, C++<br />
+        <strong>Tools:</strong> AWS, Databricks, Snowflake, Tableau, Power BI, Alteryx, Git<br />
+        <strong>Specialties:</strong> Machine Learning, Deep Learning, Health Data Science, Data Engineering, Predictive Modeling
+      </p>
+    </section>
+
+    <!-- PROJECT CARD -->
+    <section id="projects" class="section narrow">
+      <div class="project-card">
+        <h3 style="margin-top:0;">Master’s Thesis: Deep Representation Learning of EHR Sequences</h3>
+        <p><strong>Tools:</strong> Python, PyTorch, ConvAE, UMAP, pandas</p>
+        <p><strong>Data:</strong> MIMIC-III (sample subset provided)</p>
+        <p><strong>Description:</strong><br>
+          Developed a convolutional autoencoder (ConvAE) to learn latent patient representations from longitudinal EHR data, enabling unsupervised clustering into clinically meaningful subgroups.
+        </p>
+        <ul style="padding-left:1em; margin: .5rem 0;">
+          <li><strong>Objective:</strong> Extract robust vector embeddings for patient stratification.</li>
+          <li><strong>Method:</strong> CNN-based autoencoder trained on fixed-length subsequences of medical concept codes.</li>
+          <li><strong>Evaluation:</strong> Token-level reconstruction accuracy (≈45%), UMAP visualization, cluster demographics analysis.</li>
+          <li><strong>Key Findings:</strong> Identified three clusters with distinct age, gender, and mortality profiles.</li>
+        </ul>
+        <p style="margin-bottom:0;"><strong>Repository:</strong> <a href="https://github.com/mficca/masters-project" target="_blank" rel="noopener">github.com/mficca/masters-project</a></p>
+      </div>
+    </section>
+
+    <hr class="narrow">
+
+    <!-- PROJECT OVERVIEWS -->
+    <section class="section narrow">
+      <h1>Project Overviews</h1>
+
+      <h2>Patient Clustering Results</h2>
+      <p>In this section, we present an overview of patient clusters discovered using a Convolutional Autoencoder (ConvAE) on the <em>MIMIC-III</em> dataset. For privacy and reproducibility, a representative <strong>sample dataset</strong> is provided here. Below, you can see the UMAP projection of the learned patient representations, followed by a demographic summary table for each cluster.</p>
+
+      <h4>UMAP Clustering of Patient Representations</h4>
+      <figure class="umap-figure">
+        <a class="image-link" href="umap_kmeans_k3.png" target="_blank" rel="noopener">
+          <img class="image-frame" src="umap_kmeans_k3.png" alt="UMAP Clustering of Patient Vectors">
+        </a>
+        <figcaption>Figure 1: UMAP projection showing three patient clusters (0, 1, 2).</figcaption>
+      </figure>
+
+      <h4>Cluster Demographics Summary</h4>
+      <figure>
+        <a class="image-link" href="sample_data/Patient_Clusters_Demographics_Outcomes.png" target="_blank" rel="noopener">
+          <img class="image-frame" src="sample_data/Patient_Clusters_Demographics_Outcomes.png"
+               alt="Cluster demographics and outcomes table" loading="lazy">
+        </a>
+      </figure>
+
+      <h4>Cluster Findings</h4>
+
+      <section class="narrow" style="max-width:760px; margin:0 auto; line-height:1.6;">
+        <h5>Cluster 0</h5>
+        <p style="white-space:pre-line; margin:0.6rem 0;">
+          Cluster 0 contains patients predominantly in middle-age and early senior years 
+          (50–60: 19.1%, 60–70: 17.9%, 70–80: 13.9%). The group has a balanced gender 
+          distribution (54% male, 46% female) and moderate mortality rates 
+          (9.3% hospital deaths, 29.0% overall deaths). Very few patients are under age 20, 
+          indicating this cluster captures older, chronically treated individuals.
+        </p>
+
+        <h5>Cluster 1</h5>
+        <p style="white-space:pre-line; margin:0.6rem 0;">
+          Cluster 1 skews slightly older, with peaks in the 60–80 age range 
+          (60–70: 22.6%, 70–80: 25.8%). It has the highest male predominance (61.7%) 
+          and lower hospital mortality (5.2%), but a similar overall death rate (31.0%). 
+          This suggests a cohort with significant comorbidities but better acute survival.
+        </p>
+
+        <h5>Cluster 2</h5>
+        <p style="white-space:pre-line; margin:0.6rem 0;">
+          Cluster 2 exhibits the highest mortality (29.5% hospital deaths, 57.6% overall deaths) 
+          and a mixed age profile (60–70: 19.3%, 70–80: 20.7%, 80–90: 17.1%, 90+: 6.6%). 
+          The gender split is near even (54.8% male, 45.2% female). This cluster likely 
+          represents the most critically ill and frail patients in the study.
+        </p>
+
+        <h4 style="margin:1rem 0 .5rem;">Cluster Interpretations</h4>
+        <p style="white-space:pre-line; margin:0.6rem 0;">
+          Across the three ConvAE–derived patient clusters, clear differences emerge in age profiles, gender balance, and mortality outcomes, suggesting distinct clinical phenotypes:
+        </p>
+        <ol style="padding-left:1.2rem; margin:0.6rem 0;">
+          <li style="margin-bottom:0.6rem;">
+            <strong>Age and Gender Patterns</strong><br>
+            <em>Cluster 0</em> skews toward middle-aged adults (50–70), with balanced gender representation (54% male).<br> 
+                Its low proportion of very elderly patients (90+ years: 3.6%) and minimal youth involvement (&lt;1% under age 10) <br> 
+                point to a cohort of chronically managed, community-dwelling individuals.<br>
+            <em>Cluster 1</em> captures a slightly older population (peak 60–80 years) with stronger male predominance (62%).<br> 
+                The steep rise in the 70–80 band (26%) suggests patients with age-related but relatively stable comorbidities.<br>
+            <em>Cluster 2</em> shows the broadest age distribution (higher shares in 80–90 and 90+ bands) and a near-even <br> 
+                gender split, marking it as the frailest cohort.
+          </li>
+          <li style="margin-bottom:0.6rem;">
+            <strong>Mortality Outcomes</strong><br>
+            <em>Cluster 0</em> shows moderate in-hospital (9.3%) and overall (29.0%) mortality,<br> 
+                consistent with its younger, healthier composition.<br>
+            <em>Cluster 1</em>, despite older age, has lower hospital mortality (5.2%), implying better<br> 
+                acute resilience or more elective care pathways, even though its overall mortality remains elevated (31.0%).<br>
+            <em>Cluster 2</em> exhibits the highest hospital (29.5%) and overall (57.6%) death rates, <br> 
+                underscoring its identification of high-risk, severely ill patients.
+          </li>
+          <li>
+            <strong>Clinical Implications</strong><br>
+            These clusters could guide tailored care strategies: 
+            <em>Cluster 0</em> may benefit from chronic disease management; 
+            <em>Cluster 1</em> from preventive interventions to sustain acute stability;  
+            <em>Cluster 2</em> and from palliative or intensive support resources.
+          </li>
+        </ol>
+      </section>
+    </section>
+
+    <hr class="narrow">
   </div>
-
-  <hr>
-
-  <h1> Project Overviews </h1>
-
-
-  <h2>Patient Clustering Results</h2>
-  <p>In this section, we present an overview of patient clusters discovered using a Convolutional Autoencoder (ConvAE) on the <em>MIMIC-III</em> dataset. For privacy and reproducibility, a representative <strong>sample dataset</strong> is provided here. Below, you can see the UMAP projection of the learned patient representations, followed by a demographic summary table for each cluster.</p>
-
-  <h4>UMAP Clustering of Patient Representations</h4>
-  <div class="umap-figure">
-    <img src="umap_kmeans_k3.png" alt="UMAP Clustering of Patient Vectors">
-    <figcaption>Figure 1: UMAP projection showing three patient clusters (0, 1, 2).</figcaption>
-  </div>
-
-  <h4>Cluster Demographics Summary</h4>
-  <figure style="text-align:center;">
-    <img src="sample_data/Patient_Clusters_Demographics_Outcomes.png"
-         alt="Cluster demographics and outcomes table"
-         loading="lazy"
-         style="max-width:100%;height:auto;border:1px solid #ddd;border-radius:6px;">
-  </figure>
-
-  <h4>Cluster Findings</h4>
-
-  <section style="max-width:760px; margin:0 auto; line-height:1.6;">
-    <h5>Cluster 0</h5>
-    <p style="white-space:pre-line; margin:0.6rem 0;">
-      Cluster 0 contains patients predominantly in middle-age and early senior years 
-      (50–60: 19.1%, 60–70: 17.9%, 70–80: 13.9%). The group has a balanced gender 
-      distribution (54% male, 46% female) and moderate mortality rates 
-      (9.3% hospital deaths, 29.0% overall deaths). Very few patients are under age 20, 
-      indicating this cluster captures older, chronically treated individuals.
-    </p>
-  
-    <h5>Cluster 1</h5>
-    <p style="white-space:pre-line; margin:0.6rem 0;">
-      Cluster 1 skews slightly older, with peaks in the 60–80 age range 
-      (60–70: 22.6%, 70–80: 25.8%). It has the highest male predominance (61.7%) 
-      and lower hospital mortality (5.2%), but a similar overall death rate (31.0%). 
-      This suggests a cohort with significant comorbidities but better acute survival.
-    </p>
-  
-    <h5>Cluster 2</h5>
-    <p style="white-space:pre-line; margin:0.6rem 0;">
-      Cluster 2 exhibits the highest mortality (29.5% hospital deaths, 57.6% overall deaths) 
-      and a mixed age profile (60–70: 19.3%, 70–80: 20.7%, 80–90: 17.1%, 90+: 6.6%). 
-      The gender split is near even (54.8% male, 45.2% female). This cluster likely 
-      represents the most critically ill and frail patients in the study.
-    </p>
-  
-    <h4 style="margin:1rem 0 .5rem;">Cluster Interpretations</h4>
-    <p style="white-space:pre-line; margin:0.6rem 0;">
-      Across the three ConvAE–derived patient clusters, clear differences emerge in age profiles, gender balance, and mortality outcomes, suggesting distinct clinical phenotypes:
-    </p>
-    <ol style="padding-left:1.2rem; margin:0.6rem 0;">
-      <li style="margin-bottom:0.6rem;">
-        <strong>Age and Gender Patterns</strong><br>
-        <em>Cluster 0</em> skews toward middle-aged adults (50–70), with balanced gender representation (54% male).<br> 
-            Its low proportion of very elderly patients (90+ years: 3.6%) and minimal youth involvement (&lt;1% under age 10) <br> 
-            point to a cohort of chronically managed, community-dwelling individuals.<br>
-        <em>Cluster 1</em> captures a slightly older population (peak 60–80 years) with stronger male predominance (62%).<br> 
-            The steep rise in the 70–80 band (26%) suggests patients with age-related but relatively stable comorbidities.<br>
-        <em>Cluster 2</em> shows the broadest age distribution (higher shares in 80–90 and 90+ bands) and a near-even <br> 
-            gender split, marking it as the frailest cohort.
-      </li>
-      <li style="margin-bottom:0.6rem;">
-        <strong>Mortality Outcomes</strong><br>
-        <em>Cluster 0</em> shows moderate in-hospital (9.3%) and overall (29.0%) mortality,<br> 
-            consistent with its younger, healthier composition.<br>
-        <em>Cluster 1</em>, despite older age, has lower hospital mortality (5.2%), implying better<br> 
-            acute resilience or more elective care pathways, even though its overall mortality remains elevated (31.0%).<br>
-        <em>Cluster 2</em> exhibits the highest hospital (29.5%) and overall (57.6%) death rates, <br> 
-            underscoring its identification of high-risk, severely ill patients.
-      </li>
-      <li>
-        <strong>Clinical Implications</strong><br>
-        These clusters could guide tailored care strategies: 
-        <em>Cluster 0</em> may benefit from chronic disease management; 
-        <em>Cluster 1</em> from preventive interventions to sustain acute stability;  
-        <em>Cluster 2</em> and from palliative or intensive support resources.
-      </li>
-    </ol>
-  </section>
-
-  <hr>
-
-
 
   <script>
     function toggleTheme() {
@@ -245,4 +325,3 @@
 
 </body>
 </html>
-
