@@ -200,9 +200,11 @@
         <h3 style="margin-top:0;">Master’s Thesis: Deep Representation Learning of EHR Sequences</h3>
         <p><strong>Tools:</strong> R, SQL, Python - PyTorch, pandas / NumPy, scikit-learn (KMeans), umap-learn, matplotlib</p>
         <p><strong>Data:</strong> MIMIC-III ICU Data; simulated sample data provided (no raw PHI)</p>
-        <p><strong>Description:</strong><br>
-          Leveraged a convolutional autoencoder (ConvAE) to learn latent patient representations from longitudinal EHR data, enabling unsupervised clustering into clinically meaningful subgroups.
+        <p><strong>Description:</strong>Leveraged a convolutional autoencoder (ConvAE) to learn latent patient representations 
+          from longitudinal EHR data, enabling unsupervised clustering into clinically meaningful subgroups.
         </p>
+        <br>
+        <p><strong>Overview:</strong></p>
         <ul class="list">
           <li><strong>Objective:</strong> Learn label-free patient embeddings from longitudinal EHR prescriptions and test whether an order-aware ConvAE outperforms a non-temporal factorization.</li>
           <li><strong>Approach:</strong> Convolutional autoencoder (1-D conv encoder + mirrored decoder) trained to reconstruct sequences; cluster embeddings with k-means; visualize with UMAP.</li>
