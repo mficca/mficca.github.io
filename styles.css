@@ -1,0 +1,25 @@
+/* Uncap image height everywhere */
+img,
+figure img {
+  max-height: none !important;
+  height: auto !important;
+}
+
+/* Prevent figure wrappers from clipping tall images */
+figure {
+  overflow: visible !important;
+}
+
+/* Optional utility class if you want to force it on a specific image */
+img.fullheight {
+  max-height: none !important;
+  height: auto !important;
+  width: 100%;
+}
+
+.list ul {
+    margin: 0.25rem 0 0.75rem 0;
+    padding-left: 1.25rem;
+    list-style: disc;
+  }
+  
