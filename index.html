@@ -200,7 +200,7 @@
         <p><strong>Tools:</strong> Python, PyTorch, ConvAE, UMAP, pandas</p>
         <p><strong>Data:</strong> MIMIC-III (sample subset provided)</p>
         <p><strong>Description:</strong><br>
-          Developed a convolutional autoencoder (ConvAE) to learn latent patient representations from longitudinal EHR data, enabling unsupervised clustering into clinically meaningful subgroups.
+          Leveraged a convolutional autoencoder (ConvAE) to learn latent patient representations from longitudinal EHR data, enabling unsupervised clustering into clinically meaningful subgroups.
         </p>
         <ul style="padding-left:1em; margin: .5rem 0;">
           <li><strong>Objective:</strong> Extract robust vector embeddings for patient stratification.</li>
@@ -220,6 +220,29 @@
       <h1 class="section-title title-blue">
         Master’s Thesis: Deep Representation Learning of EHR Sequences
       </h1>
+
+      <h2 class="section-title title-black">Project Purpose</h2>
+
+      <p>This master’s project tested whether a convolutional autoencoder (ConvAE) that 
+        captures the temporal structure of ICU prescription sequences outperforms a non-temporal 
+        factorization baseline. I leveraged and evaluated an unsupervised ConvAE to learn compact 
+        patient representations from longitudinal EHR prescription data. Time-ordered events were 
+        embedded and passed through 1-D convolutions to capture short-range temporal dependencies; 
+        a mirrored decoder reconstructed the sequence, yielding a symmetric ConvAE. After training, 
+        patient embeddings were clustered with k-means and visualized using UMAP to assess separability. 
+        As a comparison, Non-negative Matrix Factorization (NMF) models “bag-of-codes” frequencies and 
+        ignores event order were compared to; this method had reduced cluster separability, indicating 
+        the ConvAE leverages order information rather than mere co-occurrence. Overall, ConvAE produces 
+        a more structured, granular stratification than static factorization, suggesting that modeling 
+        short-range temporal patterns yields embeddings better aligned with clinical heterogeneity. The 
+        approach is scalable, label-free, and suitable for routinely generating reusable patient vectors 
+        to support cohort discovery, exploratory phenotyping, and risk screening across datasets.
+      </p>
+
+      <p>
+        Note: The figures and tables on this page present the ConvAE pipeline and results. 
+        NMF is discussed above but results are not shown here.
+      </p>
 
       <!-- centered + black -->
       <h2 class="section-title title-black">Patient Clustering Results</h2>
