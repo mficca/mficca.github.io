@@ -49,8 +49,12 @@
     }
     nav a { color: #fff; font-weight: 600; }
 
-    /* WRAPPER */
-    .container { max-width: 980px; margin: 0 auto; padding: 2rem 1.25rem 3rem; }
+    /* WRAPPER: ~70% viewport width, with sane min/max */
+    .container {
+      max-width: clamp(720px, 70vw, 1100px);
+      margin: 0 auto;
+      padding: 2rem 1.25rem 3rem;
+    }
 
     /* HEADER / HERO */
     .header {
@@ -73,6 +77,10 @@
     h2 { color: var(--primary); margin-top: 2rem; margin-bottom: .5rem; }
     h4 { margin-top: 1.25rem; }
     .section { margin-top: 1.25rem; }
+
+    /* NARROW blocks inside container (~80% of container width) */
+    .narrow { max-width: clamp(560px, 56vw, 820px); margin: 0 auto; }
+
     .list { padding-left: 1.1rem; margin: .5rem 0; }
 
     /* CARD */
@@ -89,9 +97,7 @@
     .image-link { display: inline-block; border-radius: 6px; overflow: hidden; }
     .image-frame { border: 1px solid var(--border); border-radius: 8px; box-shadow: 0 6px 18px rgba(0,0,0,.08); }
 
-    /* TYPOGRAPHY HELPERS */
-    .narrow { max-width: 760px; margin: 0 auto; }
-    .muted { color: var(--muted); }
+    /* RULE */
     hr { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
 
     /* Centered & larger section titles */
@@ -101,11 +107,11 @@
       margin: 1.25rem 0 .75rem 0;
       line-height: 1.25;
     }
-    .title-blue  { color: var(--primary); } /* blue */
-    .title-black { color: #000; }           /* force black */
+    .title-blue  { color: var(--primary); } 
+    .title-black { color: inherit; }  /* inherits theme text color now */
 
     /* Cluster Findings styling */
-    .cluster-wrap { max-width: 760px; margin: 0 auto; }
+    .cluster-wrap { max-width: clamp(560px, 56vw, 820px); margin: 0 auto; }
     #cluster-findings { margin-bottom: 2rem; }
     #cluster-interpret { margin-top: 2rem; margin-bottom: 1.5rem; }
 
@@ -113,7 +119,7 @@
     .cluster-title {
       text-align: center; font-size: 1.45rem; margin: 0 0 .35rem 0; font-weight: 700;
     }
-    .cluster-text { margin: 0; } /* keep body text default color */
+    .cluster-text { margin: 0; } /* body text uses theme default color */
 
     /* color only the headings (titles), not the text */
     .cluster-title.c0 { color: var(--cluster-0); }
@@ -248,7 +254,7 @@
         NMF is discussed above but results are not shown here.
       </p>
 
-      <!-- centered + black -->
+      <!-- centered + theme-aware text color -->
       <h2 class="section-title title-black">Patient Clustering Results</h2>
 
       <h4 class="section-title">UMAP Clustering of Patient Representations</h4>
@@ -345,3 +351,4 @@
 
 </body>
 </html>
+
